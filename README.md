@@ -47,5 +47,3 @@ Wiggle Search (Recovery)
 
 Serial Debugging
 - Outputs real-time sensor values to the serial monitor to help with debugging and tuning of the line-following logic.
-
-IMG_1974.HEIC

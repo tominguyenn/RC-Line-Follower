@@ -25,5 +25,3 @@
 - 3x IR Sensors (Left, Middle, Right)
 - 2x DC Motors for movement
 
----
-

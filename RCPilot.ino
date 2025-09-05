@@ -1,8 +1,8 @@
 // --- TB6612FNG motor driver pins (Elegoo Smart Car V4.0 shield) ---
 const int PWMA = 5;   // Right motor speed (PWM)
-const int AIN1 = 7;   // Right motor direction
+const int AIN1 = 7;   // Right motor direction  (HIGH = forward, LOW = reverse)
 const int PWMB = 6;   // Left motor speed (PWM)
-const int BIN1 = 8;   // Left motor direction
+const int BIN1 = 8;   // Left motor direction   (HIGH = forward, LOW = reverse)
 const int STBY = 3;   // Standby (enable)
 
 // --- Line sensors ---
@@ -25,7 +25,7 @@ int searchSpeed = 40; // slow speed while wiggling
 unsigned long lastSeenTime = 0;     // time when line was last detected
 int wiggleTime = 300;               // base wiggle duration (ms)
 int maxWiggleTime = 800;            // max wiggle time
-int pauseTime = 500;               // pause between wiggles
+int pauseTime = 500;                // pause between wiggles
 bool wiggleLeft = true;             // alternate wiggle direction
 
 // --- Forward burst settings ---
@@ -99,7 +99,7 @@ void loop() {
     // Normal Line Following
     if (!justFoundLine) {
       // Just reacquired the line → do short forward bursts
-      for (int i = 0; i < maxBursts; i++) 
+      for (int i = 0; i < maxBursts; i++)
       {
         setRightMotor(baseSpeed, true);
         setLeftMotor(baseSpeed, true);
@@ -113,7 +113,7 @@ void loop() {
     lastSeenTime = millis();        // reset lost timer
 
     // --- Correction Logic ---
-    if (midBlack && !leftBlack && !rightBlack) {
+    if (!leftBlack && midBlack && !rightBlack) {
       // Straight
       setRightMotor(baseSpeed, true);
       setLeftMotor(baseSpeed, true);
@@ -123,17 +123,17 @@ void loop() {
       setRightMotor(turnSpeed, true);
       setLeftMotor(turnSpeed, false);
     }
-    else if (rightBlack && !midBlack && !leftBlack) {
-      // Hard Right Pivot
-      setRightMotor(turnSpeed, false);
-      setLeftMotor(turnSpeed, true);
-    }
-    else if (midBlack && leftBlack && !rightBlack) {
+    else if (leftBlack && midBlack && !rightBlack) {
       // Curve left
       setRightMotor(turnSpeed, true);
       setLeftMotor(baseSpeed, true);
     }
-    else if (midBlack && rightBlack && !leftBlack) {
+    else if (!leftBlack && !midBlack && rightBlack) {
+      // Hard Right Pivot
+      setRightMotor(turnSpeed, false);
+      setLeftMotor(turnSpeed, true);
+    }
+    else if (!leftBlack && midBlack && rightBlack) {
       // Curve right
       setRightMotor(baseSpeed, true);
       setLeftMotor(turnSpeed, true);

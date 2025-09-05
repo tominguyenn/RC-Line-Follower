@@ -1,10 +1,12 @@
 # Arduino RC Line Follower
 
-This project controls three LEDs using an **Arduino Nano ESP32**.  
-It features:
-- A button to cycle between LEDs (Blue → Red → Green).
-- A potentiometer to adjust the brightness of the selected LED in **real-time**.
-- A 20x4 I2C LCD to display the current LED, the next LED, and brightness percentage.
+
+- Designed and assembled a remote-controlled car using the Elegoo Smart Robot Car Kit V4 and Arduino Uno.
+- Programmed motor control via IR remote, enabling directional movement and speed control.
+- Integrated ultrasonic and IR sensors to develop an autopilot feature that allows the car to navigate a road playmat autonomously.
+- Implemented line-following logic for path tracking.
+- Gained experience in embedded systems, sensor interfacing, PWM motor control, and real-time debugging.
+
 
 ---
 

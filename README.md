@@ -11,30 +11,19 @@
 ---
 
 ## Features
-- Real-time brightness control with **PWM (LEDC)**.
-- LCD feedback showing:
-  - Current LED color
-  - Next LED color
-  - Brightness percentage
-  - Button instructions
-- Debounced button handling.
-- Modular and extensible (future Wi-Fi/mobile app control planned).
+- Line Following: The car autonomously follows a black line on a white background using three infrared (IR) sensors placed in the front.
+- Wiggle Search: If the car loses the line, it will wiggle left and right to find the line again.
+- Simple Motor Control: The car uses PWM to control its speed and direction.
+- Serial Debugging: Provides real-time data on sensor readings for debugging and analysis.
 
 ---
 
 ## Hardware Requirements
-- Arduino Nano ESP32
-- 3 × LEDs (Blue, Red, Green)
-- 3 × 220Ω resistors
-- 1 × Potentiometer (10kΩ recommended)
-- 20x4 I2C LCD module (e.g. GeeekPi IIC LCD2004)
-- Push button
-- Jumper wires and breadboard
+- Elegoo Smart Robot Car Kit V4.0:
+- Arduino Uno
+- TB6612FNG Motor Driver
+- 3x IR Sensors (Left, Middle, Right)
+- 2x DC Motors for movement
 
 ---
 
-## Wiring
-- **LCD**: SDA → D8, SCL → D9, VCC → 5V, GND → GND
-- **LEDs**: D2 (Blue), D3 (Red), D4 (Green) → through resistors → GND
-- **Button**: D5 to GND (with internal pull-up)
-- **Potentiometer**: middle pin → A0, sides → 3.3V and GND

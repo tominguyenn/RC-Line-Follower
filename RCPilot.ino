@@ -143,9 +143,9 @@ void loop() {
   // ------------------ Lost line → wiggle search ------------------
   else {
     unsigned long lostTime = millis() - lastSeenTime;
-    int currentWiggle = wiggleTime + lostTime / 5;        // increase wiggle over time
+    int currentWiggle = wiggleTime + lostTime / 5;       // make the car’s search arcs bigger the longer it’s lost
     
-    if (currentWiggle > maxWiggleTime){
+    if (currentWiggle > maxWiggleTime){                  // if current > max, set current wiggle time to max wiggle time so it doesn't wiggle forever
       currentWiggle = maxWiggleTime;
     } 
     

@@ -25,3 +25,27 @@
 - 3x IR Sensors (Left, Middle, Right)
 - 2x DC Motors for movement
 
+---
+
+## Code Structure
+Motor Control
+- Functions like setRightMotor(), setLeftMotor(), and stopMotors() are used to control the movement of the car. The motor driver (TB6612FNG) receives PWM signals for motor speed and direction.
+
+Line Following Algorithm
+- The car detects the line using infrared (IR) sensors. Based on the sensor readings, it adjusts the motor speeds to keep the car on the line.
+- If the car detects a curve, it adjusts the speed of the left or right motor to navigate the curve.
+
+The logic uses the following states:
+- Straight: Both motors are moving forward at the same speed.
+- Hard Left Pivot: Left motor is stopped, and right motor is moving.
+- Hard Right Pivot: Right motor is stopped, and left motor is moving.
+- Curve Left: Left motor is slowed down, and right motor continues at base speed.
+- Curve Right: Right motor is slowed down, and left motor continues at base speed.
+
+Wiggle Search (Recovery)
+- When the line is lost, the car alternates between moving left and right for a period (wiggle), searching for the line.
+
+Serial Debugging
+- Outputs real-time sensor values to the serial monitor to help with debugging and tuning of the line-following logic.
+
+
